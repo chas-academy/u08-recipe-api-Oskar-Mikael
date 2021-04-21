@@ -4,9 +4,12 @@ namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use App\Models\RecipeList;
+use App\Policies\ListPolicy;
 
 class AuthServiceProvider extends ServiceProvider
 {
+    
     /**
      * The policy mappings for the application.
      *
@@ -14,6 +17,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
+        RecipeList::class => ListPolicy::class
     ];
 
     /**
@@ -25,6 +29,5 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
     }
 }
