@@ -38,13 +38,10 @@ class ListsController extends Controller
      */
     public function store(Request $request)
     {
-        $faker = \Faker\Factory::create(1);
-
         $list = RecipeList::create([
-            'name' => $faker->name,
+            'name' => $request->input('name'),
             'user_id' => auth()->user()->id,
         ]);
-
         return new ListsResource($list);
     }
 
