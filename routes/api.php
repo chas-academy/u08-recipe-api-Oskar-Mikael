@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ListsController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,9 +21,8 @@ use Illuminate\Support\Facades\Route;
 
 //Protected Routes
 Route::middleware('auth:sanctum')->prefix('v1')->group(function() {
-    Route::get('/user', function(Request $request) {
-        return $request->user();
-    });
+    Route::get('/user', [UserController::class, 'getUser']);
+    Route::get('/userlists', [UserController::class, 'getLists']);
     Route::apiResource('/lists', ListsController::class);
     Route::post('/logout', [AuthController::class, 'logout']);
 });
@@ -31,5 +31,6 @@ Route::middleware('auth:sanctum')->prefix('v1')->group(function() {
 Route::get('/lists/search/{name}', [ListsController::class, 'search']);
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
+Route::get('/getusers', [UserController::class, 'getAllUsers']);
 
 
