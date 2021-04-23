@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\RecipeList;
 use App\Models\User;
+use App\Models\Recipe;
 use Illuminate\Http\Request;
 use App\Http\Resources\ListsResource;
 use Illuminate\Support\Facades\Auth;
@@ -53,7 +54,7 @@ class ListsController extends Controller
      */
     public function show(RecipeList $list)
     {
-        return new ListsResource($list);
+        return Recipe::all()->where('list_id', $list->id);
     }
 
     /**
