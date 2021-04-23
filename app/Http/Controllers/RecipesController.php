@@ -35,12 +35,12 @@ class RecipesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, RecipeList $list)
+    public function store(Request $request)
     {
         $recipe = Recipe::create([
             'name' => $request->input('name'),
             'meal_id' => $request->input('meal_id'),
-            'list_id' => $list->id,
+            'list_id' => $request->input('list_id'),
         ]);
         return new RecipesResource($recipe);
     }
