@@ -34,13 +34,7 @@ return [
         'X-Requested-With',
     ],
 
-    'exposed_headers' => [
-        'Accept',
-        'Authorization',
-        'Origin',
-        'Content-Type',
-        'X-Requested-With',
-    ],
+    'exposed_headers' => ['Access-Control-Allow-Origin'],
 
     'max_age' => 0,
 
