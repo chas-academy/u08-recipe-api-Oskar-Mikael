@@ -37,6 +37,12 @@ class RecipesController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required',
+            'meal_id' => 'required|unique',
+            'list_id' => 'required'
+        ]);
+
         $recipe = Recipe::create([
             'name' => $request->input('name'),
             'meal_id' => $request->input('meal_id'),
