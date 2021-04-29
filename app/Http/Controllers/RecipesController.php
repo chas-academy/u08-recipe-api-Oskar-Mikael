@@ -39,7 +39,7 @@ class RecipesController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'meal_id' => 'required|unique:recipes,meal_id',
+            'meal_id' => 'required|unique:recipes,meal_id,list_id',
             'list_id' => 'required'
         ]);
 
