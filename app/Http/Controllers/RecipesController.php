@@ -39,7 +39,14 @@ class RecipesController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'meal_id' => 'required|unique:recipes,meal_id,list_id',
+            'meal_id' => [
+                'required',
+                'unique:recipes,meal_id',
+                \Illuminate\Validation\Rule::unique('recipes')->where(function($query) use ($request){
+                      $query->where('list_id', '!=', $request->list_id)
+                          ->where('meal_id', '!=', $request->meal_id);
+                    }),
+                ],
             'list_id' => 'required'
         ]);
 
