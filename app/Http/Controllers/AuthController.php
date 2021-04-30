@@ -47,7 +47,7 @@ class AuthController extends Controller
             return response([
                 'message' => 'Invalid login creditentials',
                 'errors' => [
-                    'message' => 'Invalid email or password!'
+                    'message' => ['Invalid email or password!']
                 ]
             ], 401);
         }
