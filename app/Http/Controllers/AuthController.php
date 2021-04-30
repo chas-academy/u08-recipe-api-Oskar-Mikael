@@ -43,25 +43,25 @@ class AuthController extends Controller
 
         $user = User::where('email', $data['email'])->first();
 
-        $token = $user->createToken('apitoken')->plainTextToken;
 
-        if(!$user || !Hash::check($data['password'], $user->password)) {
+
+        if (!$user || !Hash::check($data['password'], $user->password)) {
             return response([
                 'message' => 'Invalid login creditentials',
                 'errors' => [
                     'message' => ['Invalid email or password!']
                 ]
             ], 401);
+        } else {
+            $token = $user->createToken('apitoken')->plainTextToken;
+
+            $response = [
+                'user' => $user,
+                'token' => $token
+            ];
+
+            return response($response, 201);
         }
-
-        
-
-        $response = [
-            'user' => $user,
-            'token' => $token
-        ];
-
-        return response($response, 201);
     }
 
     public function logout(Request $request)
