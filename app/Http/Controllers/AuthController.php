@@ -41,9 +41,11 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
-        $user = User::where('email', $data['email']);
+        $user = User::where('email', $data['email'])->first();
 
-        if((!$user) || !Hash::check($data['password'], $user->password)) {
+        $token = $user->createToken('apitoken')->plainTextToken;
+
+        if(!$user || !Hash::check($data['password'], $user->password)) {
             return response([
                 'message' => 'Invalid login creditentials',
                 'errors' => [
@@ -52,7 +54,7 @@ class AuthController extends Controller
             ], 401);
         }
 
-        $token = $user->createToken('apitoken')->plainTextToken;
+        
 
         $response = [
             'user' => $user,
