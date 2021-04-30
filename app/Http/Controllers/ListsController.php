@@ -52,9 +52,13 @@ class ListsController extends Controller
      * @param  \App\Models\RecipeList  $list
      * @return \Illuminate\Http\Response
      */
-    public function show(RecipeList $list)
+    public function show(Request $request, RecipeList $list)
     {
-        return Recipe::all()->where('list_id', $list->id);
+        if ($request->user()->id == $list->user_id) {
+            return Recipe::all()->where('list_id', $list->id);
+        } else {
+            return 'Unauthorized';
+        }
     }
 
     /**
