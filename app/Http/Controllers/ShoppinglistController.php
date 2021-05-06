@@ -17,7 +17,7 @@ class ShoppinglistController extends Controller
     public function show(Request $request, Shoppinglist $shoppinglist)
     {
         if ($request->user()->id == $shoppinglist->user_id) {
-            return Ingredient::all()->where('list_id', $shoppinglist->id);
+            return Ingredient::all()->where('shoppinglist_id', $shoppinglist->id);
         } else {
             return 'Unauthorized';
         }
