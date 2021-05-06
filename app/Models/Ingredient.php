@@ -11,7 +11,7 @@ class Ingredient extends Model
 
     protected $fillable = [
         'name',
-        'list_id'
+        'shoppinglist_id'
     ];
 
     public function shoppinglist()

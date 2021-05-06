@@ -9,17 +9,17 @@ use Illuminate\Http\Request;
 
 class IngredientController extends Controller
 {
-    public function store(Request $request, User $user)
+    public function store(Request $request)
     {
         $this->validate($request, [
             'name' => 'required',
         ]);
 
-        $recipe = Ingredient::create([
+        $ingredient = Ingredient::create([
             'name' => $request->input('name'),
-            'list_id' => $user->shoppinglist()->id,
+            'shoppinglist_id' => auth()->user()->id,
         ]);
-        return new IngredientResource($recipe);
+        return new IngredientResource($ingredient);
     }
 
     public function destroy(Ingredient $ingredient)
