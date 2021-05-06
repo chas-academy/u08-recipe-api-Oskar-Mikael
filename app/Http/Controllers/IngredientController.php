@@ -13,7 +13,6 @@ class IngredientController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'list_id' => 'required',
         ]);
 
         $recipe = Ingredient::create([
