@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\IngredientResource;
 use App\Models\Ingredient;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class IngredientController extends Controller
 {
-    public function store(Request $request)
+    public function store(Request $request, User $user)
     {
         $this->validate($request, [
             'name' => 'required',
@@ -17,7 +18,7 @@ class IngredientController extends Controller
 
         $recipe = Ingredient::create([
             'name' => $request->input('name'),
-            'list_id' => $request->input('list_id'),
+            'list_id' => $user->shoppinglist()->id,
         ]);
         return new IngredientResource($recipe);
     }
