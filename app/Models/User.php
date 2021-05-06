@@ -41,6 +41,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public static function boot()
+    {
+        parent::boot();
+
+        static::created(function ($user) {
+            $user->shoppinglist()->create([
+                'user_id' => $user->id,
+            ]);
+        });
+    }
+
     public function recipeLists()
     {
         return $this->hasMany(RecipeList::class);
