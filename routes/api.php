@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ListsController;
 use App\Http\Controllers\RecipesController;
+use App\Http\Controllers\ShoppinglistController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -30,6 +31,7 @@ Route::middleware('auth:sanctum')->prefix('v1')->group(function() {
     Route::get('/userlists', [UserController::class, 'getLists']);
     Route::apiResource('/lists', ListsController::class);
     Route::apiResource('/recipe', RecipesController::class);
+    Route::apiResource('/shoppinglist', ShoppinglistController::class);
     Route::post('/logout', [AuthController::class, 'logout']);
 });
 
