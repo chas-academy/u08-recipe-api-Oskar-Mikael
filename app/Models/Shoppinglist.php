@@ -11,11 +11,11 @@ class Shoppinglist extends Model
 
     public function user() 
     {
-        $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function ingredient()
     {
-        $this->hasMany(Ingredient::class);
+        return $this->hasMany(Ingredient::class);
     }
 }

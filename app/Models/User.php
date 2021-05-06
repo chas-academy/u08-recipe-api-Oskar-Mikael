@@ -56,4 +56,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(RecipeList::class);
     }
+
+    public function shoppinglist()
+    {
+        return $this->hasOne(Shoppinglist::class);
+    }
 }

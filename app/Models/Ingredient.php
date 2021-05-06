@@ -11,6 +11,6 @@ class Ingredient extends Model
 
     public function shoppinglist()
     {
-        $this->belongsTo(Shoppinglist::class);
+        return $this->belongsTo(Shoppinglist::class);
     }
 }
