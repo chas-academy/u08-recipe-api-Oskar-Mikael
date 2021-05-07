@@ -10,7 +10,10 @@
             <ul>
                 <li><a href="#built-with">Built With</a></li>
             </ul>
-    </li>  
+    </li>
+      <li>
+          <a href="#goals-and-context">Goals and Context</a>    
+      </li
   </ol>
 </details>
 
