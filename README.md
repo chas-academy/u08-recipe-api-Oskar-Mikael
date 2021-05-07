@@ -2,7 +2,7 @@
 [![Forks][forks-shield]][forks-url]
 [![Issues][issues-shield]][issues-url]
 <!-- TABLE OF CONTENTS -->
-# u10-business-idea-gaming-tinder-grupp1
+# U08 Laravel Recipe API
 <details open="open">
   <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
   <ol>
